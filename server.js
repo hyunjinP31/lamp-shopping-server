@@ -3,6 +3,8 @@ const cors = require('cors');
 const app = express();
 const port = 3000;
 const models = require('./models');
+//npm init;
+//module 설치하면 파일과 폴더가 하나씩 생김..
 // 업로드 이미지를 관리하는 스토리지 서버를 연결 -> 멀터를 사용하겠다.
 const multer = require('multer');
 //이미지 파일이 요청오면 어디에 저장할 건지 지정
@@ -80,7 +82,7 @@ app.post('/green',async(req,res)=>{
     console.log(req);
     res.send('그린 게시판에 게시글이 등록되었습니다.')
 });
-app.post('/products', (req, res)=>{
+app.post('/products', (req)=>{
     //http: body에 있는 데이터
     const body = req.body;
     //body 객체에 있는 값을 각각 변수에 할당
@@ -90,24 +92,20 @@ app.post('/products', (req, res)=>{
     }
     //Product 테이블에 레코드를 삽입
     models.Product.create({
-        name,
-        price,
+        name :name,
+        price: price,
         seller,
         imageUrl,
         description,
     }).then(result=>{
         console.log("상품 생성 결과 : ",result)
-        res.send({
-            result
-        })
     })
     .catch(e=>{
         console.log(e);
-        res.send('상품 업로드에 문제가 생겼습니다.')
     })
 })
 //삭제하기
-app.delete('/product/:id', async (req, res)=>{
+app.delete('/product/:id', async (req)=>{
     const params = req.params;
     models.Product.destroy({ where: { id: params.id }})
     .then(result => console.log(result));
