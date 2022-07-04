@@ -19,7 +19,11 @@ module.exports = (sequelize, DataTypes)=>{
         seller: {
             type: DataTypes.STRING(200),
             allowNall: false,
-        }
+        },
+        description: {
+            type: DataTypes.STRING(1000),
+            allowNall: false,
+        },
     })
     return product;
 }
