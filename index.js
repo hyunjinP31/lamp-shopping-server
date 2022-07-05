@@ -45,7 +45,7 @@ app.post('/image', upload.single('image'), (req, res)=>{
 
 app.get('/products',async (req,res)=>{
     //데이터 베이스 조회하기
-    models.Products.findAll()
+    models.Product.findAll()
     .then((result)=>{
         console.log()
         res.send(result);
