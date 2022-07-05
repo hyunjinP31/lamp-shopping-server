@@ -37,7 +37,7 @@ app.post('/image', upload.single('image'), (req, res)=>{
     const file = req.file;
     console.log(file);
     res.send({
-        imageUrl: "https://lamp-server-retry.herokuapp.com/"+file.destination+file.filename
+        imageUrl: "https://lamp-mall-server.herokuapp.com/"+file.destination+file.filename
     })
 })
 
